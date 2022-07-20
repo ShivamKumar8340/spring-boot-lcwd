@@ -43,13 +43,27 @@ public class SpringBootFirstApplication {
 		System.out.println(updatedResult);*/
 
 
-		/*// find all
+		/*// find all objects
 		Iterable<Student> studentIterable =repository.findAll();
 		studentIterable.forEach(s-> System.out.println(s));*/
 
-		/*// delete
+		/*// delete object
 		repository.deleteById(5L);
 		System.out.println("deleted");*/
+
+		// find By Name
+
+	List<Student>  students =	repository.findByName("ankit");
+		students.forEach(l-> System.out.println(l));
+
+		// find by name and rollNO
+		List<Student> studentList = repository.findByNameAndRollNo("shivam kashyap",12);
+		studentList.forEach(s-> System.out.println(s));
+
+		// fid by start with
+		List<Student> findStartWith=repository.findByNameStartingWith("a");
+		findStartWith.forEach(f-> System.out.println(f));
+
 	}
 
 
