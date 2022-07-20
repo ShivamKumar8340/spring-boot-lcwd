@@ -2,6 +2,8 @@ package com.sunglowsys.repository;
 
 import com.sunglowsys.domain.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -21,6 +23,30 @@ public interface StudentRepository extends JpaRepository<Student,Long> {
 
     // find by start with
     List<Student> findByNameStartingWith(String prefix);
-    // similarly we can create method like findByNameEndingWth , findByNameContainingWith
+    // similarly, we can create method like findByNameEndingWth , findByNameContainingWith
+
+
+
+
+    // write custom @Query like JPQL Query , native query
+
+    // JPQL Query
+    @Query("select s from Student s")
+    public List<Student> getAllStudent();
+
+    // get by name
+    @Query("select s from Student s where s.name =:n")
+    List<Student> getStudentByName(@Param("n") String name);
+
+
+    // get by name and roll No
+    @Query("select s from Student s where s.name =:n and s.rollNo =:i")
+    List<Student> getStudentByNameOrRollNo(@Param("n") String name,@Param("i") Integer i);
+
+
+    // native query
+    @Query(value = "select * from student",nativeQuery = true)
+    List<Student> getStudents();
+
 
 }

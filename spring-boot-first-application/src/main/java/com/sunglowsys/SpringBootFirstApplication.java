@@ -50,7 +50,17 @@ public class SpringBootFirstApplication {
 		/*// delete object
 		repository.deleteById(5L);
 		System.out.println("deleted");*/
+/*
 
+
+
+
+
+
+
+
+
+		// custom Query
 		// find By Name
 
 	List<Student>  students =	repository.findByName("ankit");
@@ -62,8 +72,36 @@ public class SpringBootFirstApplication {
 
 		// fid by start with
 		List<Student> findStartWith=repository.findByNameStartingWith("a");
-		findStartWith.forEach(f-> System.out.println(f));
+		findStartWith.forEach(f-> System.out.println(f));*/
 
+
+
+
+
+
+
+
+
+		// get Objects BY query
+		List<Student> getStudents = 	repository.getAllStudent();
+		getStudents.forEach(g-> System.out.println(g));
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+		// get By name
+		List<Student> studentName=  repository.getStudentByName("shivam kashyap");
+		studentName.forEach(n-> System.out.println(n));
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+
+		// get By name And Roll No
+		List<Student> snr =repository.getStudentByNameOrRollNo("amit",14);
+		snr.forEach(r-> System.out.println(r));
+
+		System.out.println("++++++++++++++++++++++++++++++++++++++++ Native query++++++++++++++++++");
+
+		//native query
+		List<Student> nq = repository.getStudents();
+		nq.forEach(ntq-> System.out.println(ntq));
 	}
 
 
